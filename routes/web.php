@@ -24,5 +24,7 @@ Route::get('/admin/logActivity', 'LogsController@logActivity')
     ->middleware('auth')
     ->middleware('admin');
 Route::get('/admin/users', 'LogsController@index')->name('admin.users');
-Route::post('/index/file/', 'FileController@index')->name('file.index')->middleware('auth');
+
+Route::get('/file/', 'FileController@index')->name('file.index')->middleware('auth');
+Route::post('/file/', 'FileController@post')->name('file.post')->middleware('auth');
 
