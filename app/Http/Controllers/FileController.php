@@ -28,27 +28,13 @@ class FileController extends Controller
     {
         // Validate la requête.
         $data = $request->validate([
-            'file' => 'required',
+            'file' => 'required|mimes:jpeg,jpg,png',
             'name' => 'required'
         ]);
 
-        // Sauvegarde le fichier dans le dossier fichiers.
-        $path = $request->file->store('fichiers');
-
-        // Créer une nouvelle entrée dans la base de données.
-        $fichier = new Fichier;
-        $fichier->path = $path;
-        $fichier->user_id = auth()->id();
-        $fichier->name = $request->name;
-        $fichier->save();
-
-        // Enregistre l'action dans les logs.
-        LogActivity::addToLog("Fichier {$fichier->id} uploadé");
-
-        return redirect('/home');
-
-        // Sauvegarde le fichier dans le dossier fichiers.
-        $path = $request->file->store('fichiers');
+        // Sauvegarde le fichier dans le dossier fichiers et renomme le fichier avec le nom entré dans le formulaire.
+        $extension = $request->file->getClientOriginalExtension();
+        $path = $request->file->storeAs('fichiers', $request->name.'.'.$extension);
 
         // Créer une nouvelle entrée dans la base de données.
         $fichier = new Fichier;
