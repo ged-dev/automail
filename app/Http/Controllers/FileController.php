@@ -28,13 +28,12 @@ class FileController extends Controller
     {
         // Validate la requête.
         $data = $request->validate([
-            'file' => 'required|mimes:jpeg,jpg,png',
+            'file' => 'required|mimes:csv',
             'name' => 'required'
         ]);
 
         // Sauvegarde le fichier dans le dossier fichiers et renomme le fichier avec le nom entré dans le formulaire.
-        $extension = $request->file->getClientOriginalExtension();
-        $path = $request->file->storeAs('fichiers', $request->name.'.'.$extension);
+        $path = $request->file->store('fichiers', $request->name);
 
         // Créer une nouvelle entrée dans la base de données.
         $fichier = new Fichier;

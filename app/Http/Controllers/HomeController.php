@@ -28,6 +28,6 @@ class HomeController extends Controller
         $fichiers = auth()->user()->fichiers;
 
         // Fait le rendu de la template en HTML.
-        return view('home', ['test' => 'Fukc!', 'fichiers' => $fichiers]);
+        return view('home', ['fichiers' => $fichiers]);
     }
 }
