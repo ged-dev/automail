@@ -27,3 +27,6 @@ Route::get('/admin/users', 'LogsController@index')->name('admin.users');
 Route::get('/file/', 'FileController@index')->name('file.index')->middleware('auth');
 Route::post('/file/', 'FileController@post')->name('file.post')->middleware('auth');
 
+Route::get('/file/{id}/delete', 'FileController@delete')->name('file.delete');
+Route::post('/delete', 'FileController@delete')->name('file.delete');
+

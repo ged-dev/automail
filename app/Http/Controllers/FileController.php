@@ -33,7 +33,7 @@ class FileController extends Controller
         ]);
 
         // Sauvegarde le fichier dans le dossier fichiers et renomme le fichier avec le nom entré dans le formulaire.
-        $path = $request->file->store('fichiers', $request->name);
+        $path = $request->file->store('fichiers');
 
         // Créer une nouvelle entrée dans la base de données.
         $fichier = new Fichier;
@@ -47,6 +47,11 @@ class FileController extends Controller
 
         return redirect('/home');
 
+    }
+
+    public function delete(Request $request)
+    {
+        return view('files.delete');
     }
 }
 
