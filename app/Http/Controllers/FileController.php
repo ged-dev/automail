@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fichier;
 use App\Helpers\LogActivity;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -51,7 +52,18 @@ class FileController extends Controller
 
     public function delete(Request $request)
     {
-        return view('files.delete');
+        $fichier = Fichier::findOrFail($request->id);
+        return view('files.delete', ['fichier' => $fichier]);
+    }
+
+    public function delete_confirm(Request $request)
+    {
+        $fichier = Fichier::findOrFail($request->id);
+        Storage::delete($fichier->path);
+        LogActivity::addToLog("Fichier {$fichier->id} supprimé");
+        $fichier->delete();
+
+        return redirect('/home');
     }
 }
 

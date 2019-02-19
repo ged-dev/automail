@@ -19,7 +19,7 @@
                             </div>
                         @endif
                         {{--{{                  FORMULAIRE --}}
-                        <form method="POST" action="{{ route('file.post') }}" enctype="multipart/form-data">
+                        <form method="GET" action="{{ route('file.post') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
@@ -53,16 +53,7 @@
                                 <li>{{ $fichier->name }}
 
                                 </li>
-                                <form method="POST" action="{{ route('file.delete', ['id' => $fichier->id]) }}" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Supprimer') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <a href="{{ route('file.delete', ['id' => $fichier->id]) }}">Supprimer</a>
                             @endforeach
                         </ul>
                     </div>

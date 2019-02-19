@@ -28,5 +28,5 @@ Route::get('/file/', 'FileController@index')->name('file.index')->middleware('au
 Route::post('/file/', 'FileController@post')->name('file.post')->middleware('auth');
 
 Route::get('/file/{id}/delete', 'FileController@delete')->name('file.delete');
-Route::post('/delete', 'FileController@delete')->name('file.delete');
+Route::post('/file/{id}/delete/confirm', 'FileController@delete_confirm')->name('file.confirm');
 
