@@ -83,10 +83,10 @@
                 <div class="title m-b-md">
                     AutoMail
                 </div>
-
                 <div class="links">
                     <a href="https://laravel.com/docs">Welcome</a>
                 </div>
+
             </div>
         </div>
     </body>

@@ -29,7 +29,7 @@ class FileController extends Controller
     {
         // Validate la requête.
         $data = $request->validate([
-            'file' => 'required|mimes:csv',
+            'file' => 'required|mimes:jpeg,png,jpg',
             'name' => 'required'
         ]);
 

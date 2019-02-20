@@ -4,6 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+
                 <div class="card">
                     <div class="card-header">{{ __('Upload de fichier') }}</div>
 
@@ -19,7 +21,7 @@
                             </div>
                         @endif
                         {{--{{                  FORMULAIRE --}}
-                        <form method="GET" action="{{ route('file.post') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('file.post') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
@@ -45,19 +47,25 @@
                             </div>
                         </form>
                     </div>
-
-                    <div>
-                        <h3>Mes fichiers</h3>
-                        <ul>
-                            @foreach ($fichiers as $fichier)
-                                <li>{{ $fichier->name }}
-
-                                </li>
-                                <a href="{{ route('file.delete', ['id' => $fichier->id]) }}">Supprimer</a>
-                            @endforeach
-                        </ul>
-                    </div>
                 </div>
+
+                <br />
+                <div class="card">
+                    <div class="card-header">{{ __('Mes fichiers') }}</div>
+                    <ul>
+                        @foreach ($fichiers as $fichier)
+                            <li>{{ $fichier->name }}
+
+                            </li>
+                            <a href="{{ route('file.delete', ['id' => $fichier->id]) }}">Supprimer</a>
+                        @endforeach
+                    </ul>
+                </div>
+
+
+
+
+
             </div>
         </div>
     </div>
