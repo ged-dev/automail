@@ -3,6 +3,7 @@
 namespace App\Helpers;
 use Request;
 use App\LogActivity as LogActivityModel;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class LogActivity
@@ -16,7 +17,7 @@ class LogActivity
         $log['ip'] = Request::ip();
         $log['agent'] = Request::header('user-agent');
         $log['user_id'] = auth()->check() ? auth()->user()->id : 1;
-        $log['name'] = Auth::user()->name;
+        $log['blabla'] = 'blabla';
         LogActivityModel::create($log);
     }
 
@@ -25,5 +26,4 @@ class LogActivity
     {
         return LogActivityModel::latest()->get();
     }
-
 }

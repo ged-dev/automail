@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Fichier');
     }
+
+    public function logActivities()
+    {
+        return $this->hasMany('App\LogActivity');
+    }
 }

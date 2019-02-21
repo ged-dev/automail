@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\LogActivity;
 
 class LogsController extends Controller
 {
@@ -24,12 +25,6 @@ class LogsController extends Controller
     {
         $users = DB::table('users')->get();
         return view('admin.users', ['users' => $users]);
-    }
-
-    public function testAddLog($subject)
-    {
-        \LogActivity::addToLog('$subject');
-        dd('log insert successfully.'); // dd : Dump and Die
     }
 
     public function logActivity()

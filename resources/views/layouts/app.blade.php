@@ -48,11 +48,11 @@
                                 </li>
                             @endif
                         @else
-
+                                <li class="nav-item">
                             @if (auth()->user()->isAdmin())
 
-                                <a href="{{ route('logActivity') }}">Logs</a>
-
+                                <a class="nav-link" href="{{ route('admin') }}">Panel admin</a>
+                                </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
