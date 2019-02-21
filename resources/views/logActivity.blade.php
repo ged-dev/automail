@@ -8,7 +8,10 @@
     @endif
 
     <div class="container">
-        <h1>Log Activity Lists</h1>
+        <div class="card">
+            <div class="card-header">Logs</div>
+        </div>
+
         <table class="table table-bordered">
             <tr>
                 <th>No</th>
